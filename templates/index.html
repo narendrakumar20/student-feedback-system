@@ -2,27 +2,115 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Feedback System</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Student Feedback System</h1>
-        <form action="/submit" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="feedback">Feedback:</label>
-            <textarea id="feedback" name="feedback" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
-        <h2>All Feedback</h2>
-        <ul>
-            {% for name, feedback in feedbacks %}
-                <li><strong>{{ name }}</strong>: {{ feedback }}</li>
-            {% else %}
-                <li>No feedback yet.</li>
-            {% endfor %}
-        </ul>
+    <div class="navbar">
+        <div class="navbar-content">
+            <h1 class="navbar-title">📚 Student Feedback Hub</h1>
+        </div>
     </div>
+    
+    <div class="main-container">
+        <div class="content-wrapper">
+            <!-- Feedback Form Section -->
+            <section class="form-section">
+                <div class="section-header">
+                    <h2>✍️ Share Your Feedback</h2>
+                    <p class="section-subtitle">Help us improve by sharing your thoughts</p>
+                </div>
+                
+                <form action="/submit" method="post" class="feedback-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedback">Your Feedback</label>
+                        <textarea id="feedback" name="feedback" placeholder="Share your thoughts, suggestions, or concerns..." rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span>Send Feedback</span>
+                    </button>
+                </form>
+            </section>
+            
+            <!-- Feedback List Section -->
+            <section class="feedback-section">
+                <div class="section-header">
+                    <h2>💬 Recent Feedback</h2>
+                    <p class="section-subtitle">See what others are saying</p>
+                </div>
+                
+                <div class="feedback-list">
+                    {% for name, feedback in feedbacks %}
+                        <div class="feedback-card">
+                            <div class="feedback-header">
+                                <span class="feedback-name">{{ name }}</span>
+                                <span class="feedback-icon">⭐</span>
+                            </div>
+                            <p class="feedback-text">{{ feedback }}</p>
+                        </div>
+                    {% else %}
+                        <div class="empty-state">
+                            <p class="empty-icon">📭</p>
+                            <p class="empty-text">No feedback yet. Be the first to share!</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3 class="footer-title">📚 About</h3>
+                <p>Student Feedback Hub is designed to collect and manage valuable feedback from students to improve educational experiences.</p>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3 class="footer-title">🔗 Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3 class="footer-title">📞 Contact</h3>
+                <p>Email: <a href="mailto:feedback@studenthub.com">feedback@studenthub.com</a></p>
+                <p>Phone: +1 (555) 123-4567</p>
+                <p>Address: 123 Education Street, Learning City, LC 12345</p>
+            </div>
+            
+            <!-- Social Media -->
+            <div class="footer-section">
+                <h3 class="footer-title">🌐 Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">LinkedIn</a>
+                    <a href="#" class="social-link">Instagram</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Copyright Section -->
+        <div class="footer-bottom">
+            <div class="footer-divider"></div>
+            <p class="copyright">&copy; 2024 Student Feedback System. All rights reserved.</p>
+            <p class="developer">Developed by <strong>A.Narendra Kumar</strong></p>
+        </div>
+    </footer>
 </body>
 </html>
