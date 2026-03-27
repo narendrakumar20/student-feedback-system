@@ -5,7 +5,7 @@ pipeline {
 
         stage('Clone Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/umanagesh789/student-feedback-system.git'
+                 git branch: 'main', url: 'https://github.com/narendrakumar20/student-feedback-system.git'
             }
         }
 
